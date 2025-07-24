@@ -10,9 +10,9 @@ class Race(models.Model):
 
 
 class Skill(models.Model):
-    name: str = models.CharField(max_length=255, unique=True)
-    bonus: str = models.CharField(max_length=255)
-    race: Race = models.ForeignKey(
+    name= models.CharField(max_length=255, unique=True)
+    bonus= models.CharField(max_length=255)
+    race= models.ForeignKey(
         Race,
         on_delete=models.CASCADE,
         related_name="skills",
@@ -23,19 +23,19 @@ class Skill(models.Model):
 
 
 class Guild(models.Model):
-    name: str = models.CharField(max_length=255, unique=True)
-    description: str = models.TextField(null=True)
+    name= models.CharField(max_length=255, unique=True)
+    description= models.TextField(null=True)
 
     def __str__(self) -> str:
         return self.name
 
 
 class Player(models.Model):
-    nickname: str = models.CharField(max_length=255, unique=True)
-    email: str = models.EmailField(max_length=255)
-    bio: str = models.CharField(max_length=255)
-    race: Race = models.ForeignKey(Race, on_delete=models.CASCADE)
-    guild: Guild = models.ForeignKey(
+    nickname= models.CharField(max_length=255, unique=True)
+    email= models.EmailField(max_length=255)
+    bio= models.CharField(max_length=255)
+    race= models.ForeignKey(Race, on_delete=models.CASCADE)
+    guild= models.ForeignKey(
         Guild, on_delete=models.SET_NULL, null=True
     )
     created_at: models.DateTimeField = models.DateTimeField(auto_now_add=True)
